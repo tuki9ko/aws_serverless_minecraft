@@ -23,7 +23,7 @@ This repository contains Terraform code to deploy a fully functional Minecraft s
 ### 1. Clone the Repository
 
 ```
-git clone https://github.com/yourusername/minecraft-ecs-terraform.git
+git clone https://github.com/tuki9ko/minecraft-ecs-terraform.git
 cd minecraft-ecs-terraform
 ```
 
