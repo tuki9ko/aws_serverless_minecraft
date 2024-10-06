@@ -18,6 +18,7 @@ resource "aws_ecs_task_definition" "minecraft" {
       name      = "minecraft"
       image     = "itzg/minecraft-server"
       essential = true
+      stop_timeout = 120
       portMappings = [
         {
           containerPort = 25565
@@ -74,6 +75,7 @@ resource "aws_ecs_service" "minecraft" {
   task_definition = aws_ecs_task_definition.minecraft.arn
   desired_count   = 1
   platform_version = "LATEST"
+  enable_execute_command = true
 
   deployment_controller {
     type = "ECS"
