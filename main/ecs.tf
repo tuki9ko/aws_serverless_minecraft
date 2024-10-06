@@ -16,7 +16,7 @@ resource "aws_ecs_task_definition" "minecraft" {
   container_definitions = jsonencode([
     {
       name      = "minecraft"
-      image     = "itzg/minecraft-server"
+      image     = "${aws_ecr_repository.minecraft.repository_url}:latest"
       essential = true
       stop_timeout = 120
       portMappings = [
@@ -66,6 +66,8 @@ resource "aws_ecs_task_definition" "minecraft" {
       }
     }
   }
+
+  depends_on = [aws_ecr_repository.minecraft]
 }
 
 # ECS Service

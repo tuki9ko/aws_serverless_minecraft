@@ -3,12 +3,12 @@
 function graceful_shutdown {
   echo "Received SIGTERM, notifying users and saving data..."
 
-  screen -S minecraft -p 0 -X stuff "say サーバーが停止します。30秒以内にログアウトしてください。$(printf '\r')"
+  rcon-cli say "サーバーが停止します。30秒以内にログアウトしてください。"
   sleep 30
 
-  screen -S minecraft -p 0 -X stuff "kick @a$(printf '\r')"
-  screen -S minecraft -p 0 -X stuff "save-all$(printf '\r')"
-  screen -S minecraft -p 0 -X stuff "stop$(printf '\r')"
+  rcon-cli kick @a
+  rcon-cli save-all
+  rcon-cli stop
   sleep 10
 
   exit 0
